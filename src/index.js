@@ -1,5 +1,7 @@
+import './styles/main.scss';
 import { gameState, resetGameState } from './state.js';
 import { createHeader } from './components/header.js';
+import { createCard } from './components/card.js';
 
 resetGameState();
 
@@ -21,3 +23,9 @@ console.log(
   'Раскладка:',
   gameState.cards.map((c) => c.name)
 );
+
+const testCard = createCard(gameState.cards[0], (data) => {
+  console.log('CLK:', data.name);
+  testCard.flip();
+});
+document.body.append(testCard.element);
