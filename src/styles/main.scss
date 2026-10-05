@@ -96,6 +96,24 @@ body {
     box-shadow: 0 4px 10px rgb(0 0 0 / 30%);
   }
 
+  &:not(.card--flipped, .card--matched) {
+    cursor: pointer;
+
+    &:hover .card__inner {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgb(0 0 0 / 45%);
+    }
+
+    &:active .card__inner {
+      transform: translateY(-1px);
+    }
+  }
+
+  &:focus-visible .card__inner {
+    outline: 2px solid #f1c40f;
+    outline-offset: 3px;
+  }
+
   &--flipped &__inner,
   &--matched &__inner {
     transform: rotateY(180deg);
