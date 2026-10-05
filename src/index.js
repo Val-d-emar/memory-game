@@ -4,6 +4,19 @@ import { createBoard } from './components/board.js';
 import { createHeader } from './components/header.js';
 import { createModal } from './components/modal.js';
 import { initGame } from './services/gameLogic.js';
+import { formatDate, getLeaderboard, saveGameResult } from './services/storage.js';
+
+console.log('Текущая дата ДД.ММ.ГГГГ:', formatDate());
+console.log('Таблица лидеров до сохранения:', getLeaderboard());
+
+localStorage.removeItem('memory_game_leaderboard_jhfytdfdvthrbi');
+
+saveGameResult(18);
+saveGameResult(12);
+saveGameResult(18);
+
+console.log('--- Проверка таблицы лидеров ---');
+console.table(getLeaderboard());
 
 const modal = createModal();
 
