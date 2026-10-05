@@ -1,12 +1,36 @@
 import './styles/main.scss';
-import { gameState, resetGameState } from './state.js';
-import { createHeader } from './components/header.js';
+import { gameState } from './state.js';
 import { createBoard } from './components/board.js';
+import { createHeader } from './components/header.js';
+import { createModal } from './components/modal.js';
 import { initGame } from './services/gameLogic.js';
+
+const modal = createModal();
 
 const board = createBoard();
 
 let gameController = null;
+
+function showTestModal() {
+  const container = document.createElement('div');
+
+  const title = document.createElement('h2');
+  title.classList.add('modal__title');
+  title.textContent = 'модалка';
+
+  const text = document.createElement('p');
+  text.classList.add('modal__text');
+  text.textContent = 'Это модальное окно.';
+
+  const closeBtn = document.createElement('button');
+  closeBtn.type = 'button';
+  closeBtn.classList.add('btn');
+  closeBtn.textContent = 'Закрыть';
+  closeBtn.addEventListener('click', () => modal.close());
+
+  container.append(title, text, closeBtn);
+  modal.open(container);
+}
 
 const header = createHeader({
   onNewGame: () => {
@@ -17,6 +41,7 @@ const header = createHeader({
   },
   onOpenLeaderboard: () => {
     console.log('BTN: onOpenLeaderboard');
+    showTestModal();
   },
 });
 
@@ -28,7 +53,7 @@ console.log(
   gameState.cards.map((c) => c.name)
 );
 
-document.body.append(header.element, board.element);
+document.body.append(header.element, board.element, modal.element);
 
 gameController = initGame({
   header,
