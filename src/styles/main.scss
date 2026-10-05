@@ -209,3 +209,38 @@ body.no-scroll {
     justify-content: center;
   }
 }
+
+.modal__view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0;
+  font-size: 0.95rem;
+
+  th,
+  td {
+    padding: 8px 12px;
+    text-align: center;
+  }
+
+  th {
+    border-bottom: 2px solid #f1c40f;
+    color: #f1c40f;
+    font-weight: 700;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
+
+    &:hover {
+      background-color: rgb(255 255 255 / 5%);
+    }
+  }
+}
